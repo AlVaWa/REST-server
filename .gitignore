@@ -2,6 +2,7 @@
 
 ### React ####
 .module-cache
+.build
 
 
 ### Java ###
