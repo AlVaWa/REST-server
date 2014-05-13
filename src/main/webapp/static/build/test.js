@@ -2,8 +2,8 @@
  * @jsx React.DOM
  */
 
-
 var converter = new Showdown.converter();
+
 var CommentBox = React.createClass({displayName: 'CommentBox',
     loadCommentsFromServer: function() {
         $.ajax({

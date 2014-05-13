@@ -19,6 +19,10 @@
     </servlet >
     <servlet-mapping >
         <servlet-name >HelloWorld Jersey Service </servlet-name >
-        <url-pattern >/* </url-pattern >
+        <url-pattern >/api/* </url-pattern >
     </servlet-mapping >
+
+    <welcome-file-list>
+        <welcome-file>/static/index.html</welcome-file>
+    </welcome-file-list>
 </web-app>
