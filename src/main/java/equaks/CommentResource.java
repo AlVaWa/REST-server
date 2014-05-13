@@ -22,10 +22,12 @@ public class CommentResource {
         BlogComment comment = new BlogComment();
         comment.setAuthor("Aleksander Waage");
         comment.setText("This is a comment");
+        comment.setTime("19:19");
 
         BlogComment comment1 = new BlogComment();
         comment1.setAuthor("Jennifer Skarning");
         comment1.setText("This is *another* comment");
+        comment1.setTime("19:21");
 
         comments.add(comment);
         comments.add(comment1);

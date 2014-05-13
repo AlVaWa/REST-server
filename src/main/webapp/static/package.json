@@ -1,0 +1,22 @@
+{
+  "name": "reactTesting",
+  "version": "0.10.28",
+  "description": "README:",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/AlVaWa/react-testing.git"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "avw",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlVaWa/react-testing/issues"
+  },
+  "homepage": "https://github.com/AlVaWa/react-testing"
+}

@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlElement;
  * To change this template use File | Settings | File Templates.
  */
 public class BlogComment {
-    String author, text;
+    String author, text, time;
 
-    @XmlElement(name="author")
+    @XmlElement
     public String getAuthor() {
         return author;
     }
@@ -21,13 +21,21 @@ public class BlogComment {
         this.author = author;
     }
 
-    @XmlElement(name="text")
+    @XmlElement
     public String getText() {
         return text;
     }
 
     public void setText(String text) {
         this.text = text;
+    }
+    @XmlElement(name="time")
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     @Override
