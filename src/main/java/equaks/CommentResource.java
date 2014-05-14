@@ -1,8 +1,6 @@
 package equaks;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,24 +11,41 @@ import java.util.List;
 @Path("/comment")
 public class CommentResource {
 
+    static ArrayList<BlogComment> comments = new ArrayList<BlogComment>();
+    static {
+        BlogComment comment = new BlogComment("Aleksander Waage", "This is a comment", "19:19");
+        BlogComment comment1 = new BlogComment("Jennifer Skarning", "This is *another* comment", "19:21");
+
+        comments.add(comment);
+        comments.add(comment1);
+    }
 
     @GET
     @Produces({MediaType.APPLICATION_JSON, MediaType.TEXT_XML})
     public List<BlogComment> getUser(){
+        return comments;
+    }
 
-        ArrayList<BlogComment> comments = new ArrayList<BlogComment>();
-        BlogComment comment = new BlogComment();
-        comment.setAuthor("Aleksander Waage");
-        comment.setText("This is a comment");
-        comment.setTime("19:19");
+    @PUT
+    @Produces(MediaType.TEXT_HTML)
+    public String putSomething(){
+        return "You tried to put";
+    }
 
-        BlogComment comment1 = new BlogComment();
-        comment1.setAuthor("Jennifer Skarning");
-        comment1.setText("This is *another* comment");
-        comment1.setTime("19:21");
+    @DELETE
+    @Produces(MediaType.TEXT_HTML)
+    public String deleteSomething(){
+        return "You tried to delete something";
+    }
 
-        comments.add(comment);
-        comments.add(comment1);
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<BlogComment> postSomething(List<BlogComment> tempComments){
+        tempComments.get(0);
+        if (tempComments.get(0) != null){
+            comments.add(tempComments.get(0));
+        }
         return comments;
     }
 

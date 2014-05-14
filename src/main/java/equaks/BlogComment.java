@@ -1,6 +1,7 @@
 package equaks;
 
 import javax.xml.bind.annotation.XmlElement;
+import java.io.Serializable;
 
 /**
  * Created with IntelliJ IDEA.
@@ -9,8 +10,14 @@ import javax.xml.bind.annotation.XmlElement;
  * Time: 16:11
  * To change this template use File | Settings | File Templates.
  */
-public class BlogComment {
+public class BlogComment implements Serializable {
     String author, text, time;
+
+    public BlogComment(String author, String text, String time) {
+        this.author = author;
+        this.text = text;
+        this.time = time;
+    }
 
     @XmlElement
     public String getAuthor() {
@@ -29,7 +36,7 @@ public class BlogComment {
     public void setText(String text) {
         this.text = text;
     }
-    @XmlElement(name="time")
+    @XmlElement
     public String getTime() {
         return time;
     }

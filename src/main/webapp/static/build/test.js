@@ -3,7 +3,6 @@
  */
 
 var converter = new Showdown.converter();
-
 var CommentBox = React.createClass({displayName: 'CommentBox',
     loadCommentsFromServer: function() {
         $.ajax({
@@ -13,24 +12,43 @@ var CommentBox = React.createClass({displayName: 'CommentBox',
                 this.setState({data: data});
             }.bind(this),
             error: function(xhr, status, err) {
-                console.error(this.props.url, status, err.toString());
+                console.error("http://localhost:8900/app/api/comment", status, err.toString());
             }.bind(this)
         });
     },
+    handleCommentSubmit: function(comment) {
+        var comments = this.state.data;
+        var newComments = comments.concat([comment]);
+        this.setState({data: newComments});
+        var dataList = new Array(comment);
 
+        $.ajax({
+            url: "http://localhost:8900/app/api/comment",
+            dataType: 'json',
+            contentType : 'application/json',
+            type: 'POST',
+            data: JSON.stringify(dataList),
+            success: function(data) {
+                this.setState({data: data});
+            }.bind(this),
+            error: function(xhr, status, err) {
+                console.error("http://localhost:8900/app/api/comment", status, err.toString());
+            }.bind(this)
+        });
+    },
     getInitialState: function() {
         return {data: []};
     },
     componentWillMount: function() {
         this.loadCommentsFromServer();
-        setInterval(this.loadCommentsFromServer, this.props.pollInterval);
+        setInterval(this.loadCommentsFromServer, 2000);
     },
     render: function() {
         return (
             React.DOM.div( {className:"commentBox"}, 
                 React.DOM.h1(null, "Comments"),
                 CommentList( {data:this.state.data} ),
-                CommentForm(null )
+                CommentForm( {onCommentSubmit:this.handleCommentSubmit} )
             )
             );
     }
@@ -50,10 +68,39 @@ var CommentList = React.createClass({displayName: 'CommentList',
 });
 
 var CommentForm = React.createClass({displayName: 'CommentForm',
+    handleSubmit: function() {
+        var author = this.refs.author.getDOMNode().value.trim();
+        var text = this.refs.text.getDOMNode().value.trim();
+        var time = this.refs.time.getDOMNode().value.trim();
+        this.props.onCommentSubmit({author: author, text: text, time: time});
+        this.refs.author.getDOMNode().value = '';
+        this.refs.text.getDOMNode().value = '';
+        this.refs.time.getDOMNode().value = '';
+        return false;
+    },
+
     render: function() {
         return (
-            React.DOM.div( {className:"commentForm"}, 
-            "Hello, world! I am a CommentForm."
+            React.DOM.form( {className:"commentForm", onSubmit:this.handleSubmit}, 
+
+                React.DOM.input(
+                {type:"text",
+                placeholder:"Your name",
+                ref:"author"} ),
+
+                React.DOM.input(
+                {type:"text",
+                placeholder:"Say something...",
+                ref:"text"}
+                ),
+
+                React.DOM.input(
+                {type:"text",
+                placeholder:"time",
+                ref:"time"}
+                ),
+
+                React.DOM.input( {type:"submit", value:"Post"} )
             )
             );
     }
@@ -75,7 +122,6 @@ var Comment = React.createClass({displayName: 'Comment',
             );
     }
 });
-
 React.renderComponent(
     CommentBox(null ),
     document.getElementById('content')
