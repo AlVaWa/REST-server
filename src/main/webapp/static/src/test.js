@@ -2,6 +2,8 @@
  * @jsx React.DOM
  */
 
+require(["showdown.min"]);
+
 var converter = new Showdown.converter();
 var CommentBox = React.createClass({
     loadCommentsFromServer: function() {
@@ -46,7 +48,6 @@ var CommentBox = React.createClass({
     render: function() {
         return (
             <div className="commentBox">
-                <h1>Comments</h1>
                 <CommentList data={this.state.data} />
                 <CommentForm onCommentSubmit={this.handleCommentSubmit} />
             </div>
@@ -83,24 +84,31 @@ var CommentForm = React.createClass({
         return (
             <form className="commentForm" onSubmit={this.handleSubmit}>
 
-                <input
-                type="text"
-                placeholder="Your name"
-                ref="author" />
+                <div >
+                    <label for="name">Name:</label>
+                        <input type="text" placeholder="Your name" ref="author" />
+                </div>
 
-                <input
-                type="text"
-                placeholder="Say something..."
-                ref="text"
-                />
+                <div class="form-group">
+                    <label for="time">Time:</label>
+                    <input  type="text" placeholder="Time" ref="time" />
+                </div>
 
-                <input
-                type="text"
-                placeholder="time"
-                ref="time"
-                />
+                <div class="form-group">
+                    <label >Comment:</label>
+                    <textarea type="text" placeholder="Say something..." ref="text" />
+                </div>
 
-                <input type="submit" value="Post" />
+                <button type="submit">Post</button>
+
+                <Button>Default</Button>
+                <Button bsStyle="primary">Primary</Button>
+                <Button bsStyle="success">Success</Button>
+                <Button bsStyle="info">Info</Button>
+                <Button bsStyle="warning">Warning</Button>
+                <Button bsStyle="danger">Danger</Button>
+                <Button bsStyle="link">Link</Button>
+
             </form>
             );
     }

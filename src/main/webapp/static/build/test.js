@@ -2,6 +2,8 @@
  * @jsx React.DOM
  */
 
+require(["showdown.min"]);
+
 var converter = new Showdown.converter();
 var CommentBox = React.createClass({displayName: 'CommentBox',
     loadCommentsFromServer: function() {
@@ -46,7 +48,6 @@ var CommentBox = React.createClass({displayName: 'CommentBox',
     render: function() {
         return (
             React.DOM.div( {className:"commentBox"}, 
-                React.DOM.h1(null, "Comments"),
                 CommentList( {data:this.state.data} ),
                 CommentForm( {onCommentSubmit:this.handleCommentSubmit} )
             )
@@ -83,24 +84,31 @@ var CommentForm = React.createClass({displayName: 'CommentForm',
         return (
             React.DOM.form( {className:"commentForm", onSubmit:this.handleSubmit}, 
 
-                React.DOM.input(
-                {type:"text",
-                placeholder:"Your name",
-                ref:"author"} ),
-
-                React.DOM.input(
-                {type:"text",
-                placeholder:"Say something...",
-                ref:"text"}
+                React.DOM.div(null , 
+                    React.DOM.label( {for:"name"}, "Name:"),
+                        React.DOM.input( {type:"text", placeholder:"Your name", ref:"author"} )
                 ),
 
-                React.DOM.input(
-                {type:"text",
-                placeholder:"time",
-                ref:"time"}
+                React.DOM.div( {class:"form-group"}, 
+                    React.DOM.label( {for:"time"}, "Time:"),
+                    React.DOM.input(  {type:"text", placeholder:"Time", ref:"time"} )
                 ),
 
-                React.DOM.input( {type:"submit", value:"Post"} )
+                React.DOM.div( {class:"form-group"}, 
+                    React.DOM.label(null , "Comment:"),
+                    React.DOM.textarea( {type:"text", placeholder:"Say something...", ref:"text"} )
+                ),
+
+                React.DOM.button( {type:"submit"}, "Post"),
+
+                Button(null, "Default"),
+                Button( {bsStyle:"primary"}, "Primary"),
+                Button( {bsStyle:"success"}, "Success"),
+                Button( {bsStyle:"info"}, "Info"),
+                Button( {bsStyle:"warning"}, "Warning"),
+                Button( {bsStyle:"danger"}, "Danger"),
+                Button( {bsStyle:"link"}, "Link")
+
             )
             );
     }
