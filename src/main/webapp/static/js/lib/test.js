@@ -5,7 +5,7 @@
 require(["react", "react-bootstrap-bower-master/Alert"], function(React, Alert ) {
 
     var converter = new Showdown.converter();
-    var CommentBox = React.createClass({
+    var CommentBox = React.createClass({displayName: 'CommentBox',
         loadCommentsFromServer: function() {
             $.ajax({
                 url: "http://localhost:8900/app/api/comment",
@@ -48,30 +48,30 @@ require(["react", "react-bootstrap-bower-master/Alert"], function(React, Alert )
         },
         render: function() {
             return (
-                <div className="commentBox">
-                    <CommentList data={this.state.data} />
-                    <CommentForm onCommentSubmit={this.handleCommentSubmit} />
-                </div>
+                React.DOM.div( {className:"commentBox"}, 
+                    CommentList( {data:this.state.data} ),
+                    CommentForm( {onCommentSubmit:this.handleCommentSubmit} )
+                )
                 );
         }
     });
 
-    var CommentList = React.createClass({
+    var CommentList = React.createClass({displayName: 'CommentList',
         render: function() {
             var commentNodes = this.props.data.map(function (comment) {
-                return <Comment time={comment.time} author={comment.author}>{comment.text}</Comment>
+                return Comment( {time:comment.time, author:comment.author}, comment.text)
             });
             return (
-                <div className="commentList">
-                        {commentNodes}
-                </div>
+                React.DOM.div( {className:"commentList"}, 
+                        commentNodes
+                )
                 );
         }
     });
 
 
 
-    var CommentForm = React.createClass({
+    var CommentForm = React.createClass({displayName: 'CommentForm',
         handleSubmit: function() {
             var author = this.refs.author.getDOMNode().value.trim();
             var text = this.refs.text.getDOMNode().value.trim();
@@ -85,48 +85,48 @@ require(["react", "react-bootstrap-bower-master/Alert"], function(React, Alert )
 
         render: function() {
             return (
-                <form className="commentForm" onSubmit={this.handleSubmit}>
+                React.DOM.form( {className:"commentForm", onSubmit:this.handleSubmit}, 
 
-                    <div >
-                        <label for="name">Name:</label>
-                            <input type="text" placeholder="Your name" ref="author" />
-                    </div>
+                    React.DOM.div(null , 
+                        React.DOM.label( {for:"name"}, "Name:"),
+                            React.DOM.input( {type:"text", placeholder:"Your name", ref:"author"} )
+                    ),
 
-                    <div class="form-group">
-                        <label for="time">Time:</label>
-                        <input  type="text" placeholder="Time" ref="time" />
-                    </div>
+                    React.DOM.div( {class:"form-group"}, 
+                        React.DOM.label( {for:"time"}, "Time:"),
+                        React.DOM.input(  {type:"text", placeholder:"Time", ref:"time"} )
+                    ),
 
-                    <div class="form-group">
-                        <label >Comment:</label>
-                        <textarea type="text" placeholder="Say something..." ref="text" />
-                    </div>
+                    React.DOM.div( {class:"form-group"}, 
+                        React.DOM.label(null , "Comment:"),
+                        React.DOM.textarea( {type:"text", placeholder:"Say something...", ref:"text"} )
+                    ),
 
-                    <button type="submit">Post</button>
+                    React.DOM.button( {type:"submit"}, "Post")
 
-                </form>
+                )
                 );
         }
     });
 
-    var Comment = React.createClass({
+    var Comment = React.createClass({displayName: 'Comment',
         render: function() {
             var rawMarkup = converter.makeHtml(this.props.children.toString())
             return (
-                <div className="comment">
-                    <h2 className="commentAuthor">
-                            {this.props.author}
-                    </h2>
-                    <h5>
-                            {this.props.time}
-                    </h5>
-                    <span dangerouslySetInnerHTML={{__html: rawMarkup}} />
-                </div>
+                React.DOM.div( {className:"comment"}, 
+                    React.DOM.h2( {className:"commentAuthor"}, 
+                            this.props.author
+                    ),
+                    React.DOM.h5(null, 
+                            this.props.time
+                    ),
+                    React.DOM.span( {dangerouslySetInnerHTML:{__html: rawMarkup}} )
+                )
                 );
         }
     });
     React.renderComponent(
-        <CommentBox />,
+        CommentBox(null ),
         document.getElementById('content')
     );
 

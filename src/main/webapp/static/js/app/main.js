@@ -1,4 +1,4 @@
-define(["jquery", "react_0.10.min", "showdown.min", "react-bootstrap"], function($) {
+define(["react", "showdown", "react-bootstrap"], function($) {
 
     $(function() {
         $('body').alpha().beta();

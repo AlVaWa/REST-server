@@ -644,7 +644,7 @@ define(
     };
   });
 define(
-  'transpiled/BootstrapMixin',["./react-es6","./react-bootstrap-bower-master/constants","exports"],
+  'transpiled/BootstrapMixin',["./react-es6","./constants","exports"],
   function(__dependency1__, __dependency2__, __exports__) {
     
     var React = __dependency1__["default"];
@@ -1540,7 +1540,7 @@ define(
     };
   });
 define(
-  'transpiled/PanelGroup',["./react-es6","./react-es6/lib/cx","./react-bootstrap-bower-master/BootstrapMixin","./utils","exports"],
+  'transpiled/PanelGroup',["./react-es6","./react-es6/lib/cx","./BootstrapMixin","./utils","exports"],
   function(__dependency1__, __dependency2__, __dependency3__, __dependency4__, __exports__) {
     
     /** @jsx React.DOM */
@@ -1626,7 +1626,7 @@ define(
     __exports__["default"] = PanelGroup;
   });
 define(
-  'transpiled/Accordion',["./react-es6","./react-bootstrap-bower-master/PanelGroup","exports"],
+  'transpiled/Accordion',["./react-es6","./PanelGroup","exports"],
   function(__dependency1__, __dependency2__, __exports__) {
     
     /** @jsx React.DOM */
@@ -1648,7 +1648,7 @@ define(
 
     __exports__["default"] = Accordion;
   });
-define('Accordion',['./react-bootstrap-bower-master/transpiled/Accordion'], function (Accordion) {
+define('Accordion',['./transpiled/Accordion'], function (Accordion) {
   return Accordion['default'];
 });
 define(
@@ -1723,7 +1723,7 @@ define(
     };
   });
 define(
-  'transpiled/AffixMixin',["./react-es6","./react-bootstrap-bower-master/domUtils","exports"],
+  'transpiled/AffixMixin',["./react-es6","./domUtils","exports"],
   function(__dependency1__, __dependency2__, __exports__) {
     
     /* global window, document */
@@ -1851,7 +1851,7 @@ define(
     __exports__["default"] = AffixMixin;
   });
 define(
-  'transpiled/Affix',["./react-es6","./react-bootstrap-bower-master/AffixMixin","./domUtils","exports"],
+  'transpiled/Affix',["./react-es6","./AffixMixin","./domUtils","exports"],
   function(__dependency1__, __dependency2__, __dependency3__, __exports__) {
     
     /** @jsx React.DOM */
@@ -1878,14 +1878,14 @@ define(
 
     __exports__["default"] = Affix;
   });
-define('Affix',['./react-bootstrap-bower-master/transpiled/Affix'], function (Affix) {
+define('Affix',['./transpiled/Affix'], function (Affix) {
   return Affix['default'];
 });
-define('AffixMixin',['./react-bootstrap-bower-master/transpiled/AffixMixin'], function (AffixMixin) {
+define('AffixMixin',['./transpiled/AffixMixin'], function (AffixMixin) {
   return AffixMixin['default'];
 });
 define(
-  'transpiled/Alert',["./react-es6","./react-es6/lib/cx","./react-bootstrap-bower-master/BootstrapMixin","exports"],
+  'transpiled/Alert',["./react-es6","./react-es6/lib/cx","./BootstrapMixin","exports"],
   function(__dependency1__, __dependency2__, __dependency3__, __exports__) {
     
     /** @jsx React.DOM */
@@ -1949,10 +1949,10 @@ define(
 
     __exports__["default"] = Alert;
   });
-define('Alert',['./react-bootstrap-bower-master/transpiled/Alert'], function (Alert) {
+define('Alert',['./transpiled/Alert'], function (Alert) {
   return Alert['default'];
 });
-define('BootstrapMixin',['./react-bootstrap-bower-master/transpiled/BootstrapMixin'], function (BootstrapMixin) {
+define('BootstrapMixin',['./transpiled/BootstrapMixin'], function (BootstrapMixin) {
   return BootstrapMixin['default'];
 });
 define(
@@ -1976,11 +1976,11 @@ define(
 
     __exports__["default"] = Badge;
   });
-define('Badge',['./react-bootstrap-bower-master/transpiled/Badge'], function (Badge) {
+define('Badge',['./transpiled/Badge'], function (Badge) {
   return Badge['default'];
 });
 define(
-  'transpiled/Button',["./react-es6","./react-es6/lib/cx","./react-bootstrap-bower-master/BootstrapMixin","exports"],
+  'transpiled/Button',["./react-es6","./react-es6/lib/cx","./BootstrapMixin","exports"],
   function(__dependency1__, __dependency2__, __dependency3__, __exports__) {
     
     /** @jsx React.DOM */
@@ -2041,11 +2041,11 @@ define(
 
     __exports__["default"] = Button;
   });
-define('Button',['./react-bootstrap-bower-master/transpiled/Button'], function (Button) {
+define('Button',['./transpiled/Button'], function (Button) {
   return Button['default'];
 });
 define(
-  'transpiled/ButtonGroup',["./react-es6","./react-es6/lib/cx","./react-bootstrap-bower-master/BootstrapMixin","./Button","exports"],
+  'transpiled/ButtonGroup',["./react-es6","./react-es6/lib/cx","./BootstrapMixin","./Button","exports"],
   function(__dependency1__, __dependency2__, __dependency3__, __dependency4__, __exports__) {
     
     /** @jsx React.DOM */
@@ -2085,11 +2085,11 @@ define(
 
     __exports__["default"] = ButtonGroup;
   });
-define('ButtonGroup',['./react-bootstrap-bower-master/transpiled/ButtonGroup'], function (ButtonGroup) {
+define('ButtonGroup',['./transpiled/ButtonGroup'], function (ButtonGroup) {
   return ButtonGroup['default'];
 });
 define(
-  'transpiled/ButtonToolbar',["./react-es6","./react-es6/lib/cx","./react-bootstrap-bower-master/BootstrapMixin","./Button","exports"],
+  'transpiled/ButtonToolbar',["./react-es6","./react-es6/lib/cx","./BootstrapMixin","./Button","exports"],
   function(__dependency1__, __dependency2__, __dependency3__, __dependency4__, __exports__) {
     
     /** @jsx React.DOM */
@@ -2123,11 +2123,11 @@ define(
 
     __exports__["default"] = ButtonGroup;
   });
-define('ButtonToolbar',['./react-bootstrap-bower-master/transpiled/ButtonToolbar'], function (ButtonToolbar) {
+define('ButtonToolbar',['./transpiled/ButtonToolbar'], function (ButtonToolbar) {
   return ButtonToolbar['default'];
 });
 define(
-  'transpiled/Carousel',["./react-es6","./react-es6/lib/cx","./react-bootstrap-bower-master/BootstrapMixin","./utils","exports"],
+  'transpiled/Carousel',["./react-es6","./react-es6/lib/cx","./BootstrapMixin","./utils","exports"],
   function(__dependency1__, __dependency2__, __dependency3__, __dependency4__, __exports__) {
     
     /** @jsx React.DOM */
@@ -2429,7 +2429,7 @@ define(
 
     __exports__["default"] = Carousel;
   });
-define('Carousel',['./react-bootstrap-bower-master/transpiled/Carousel'], function (Carousel) {
+define('Carousel',['./transpiled/Carousel'], function (Carousel) {
   return Carousel['default'];
 });
 define(
@@ -2678,7 +2678,7 @@ define(
 
     __exports__["default"] = CarouselItem;
   });
-define('CarouselItem',['./react-bootstrap-bower-master/transpiled/CarouselItem'], function (CarouselItem) {
+define('CarouselItem',['./transpiled/CarouselItem'], function (CarouselItem) {
   return CarouselItem['default'];
 });
 define(
@@ -2694,7 +2694,7 @@ define(
     };
   });
 define(
-  'transpiled/Col',["./react-es6","./react-es6/lib/cx","./react-bootstrap-bower-master/PropTypes","./constants","exports"],
+  'transpiled/Col',["./react-es6","./react-es6/lib/cx","./PropTypes","./constants","exports"],
   function(__dependency1__, __dependency2__, __dependency3__, __dependency4__, __exports__) {
     
     /** @jsx React.DOM */
@@ -2774,7 +2774,7 @@ define(
 
     __exports__["default"] = Col;
   });
-define('Col',['./react-bootstrap-bower-master/transpiled/Col'], function (Col) {
+define('Col',['./transpiled/Col'], function (Col) {
   return Col['default'];
 });
 define(
@@ -2830,7 +2830,7 @@ define(
     __exports__["default"] = DropdownStateMixin;
   });
 define(
-  'transpiled/DropdownMenu',["./react-es6","./react-es6/lib/cx","./react-bootstrap-bower-master/utils","exports"],
+  'transpiled/DropdownMenu',["./react-es6","./react-es6/lib/cx","./utils","exports"],
   function(__dependency1__, __dependency2__, __dependency3__, __exports__) {
     
     /** @jsx React.DOM */
@@ -2878,7 +2878,7 @@ define(
     __exports__["default"] = DropdownMenu;
   });
 define(
-  'transpiled/DropdownButton',["./react-es6","./react-es6/lib/cx","./react-bootstrap-bower-master/BootstrapMixin","./DropdownStateMixin","./Button","./ButtonGroup","./DropdownMenu","exports"],
+  'transpiled/DropdownButton',["./react-es6","./react-es6/lib/cx","./BootstrapMixin","./DropdownStateMixin","./Button","./ButtonGroup","./DropdownMenu","exports"],
   function(__dependency1__, __dependency2__, __dependency3__, __dependency4__, __dependency5__, __dependency6__, __dependency7__, __exports__) {
     
     /** @jsx React.DOM */
@@ -2953,13 +2953,13 @@ define(
 
     __exports__["default"] = DropdownButton;
   });
-define('DropdownButton',['./react-bootstrap-bower-master/transpiled/DropdownButton'], function (DropdownButton) {
+define('DropdownButton',['./transpiled/DropdownButton'], function (DropdownButton) {
   return DropdownButton['default'];
 });
-define('DropdownMenu',['./react-bootstrap-bower-master/transpiled/DropdownMenu'], function (DropdownMenu) {
+define('DropdownMenu',['./transpiled/DropdownMenu'], function (DropdownMenu) {
   return DropdownMenu['default'];
 });
-define('DropdownStateMixin',['./react-bootstrap-bower-master/transpiled/DropdownStateMixin'], function (DropdownStateMixin) {
+define('DropdownStateMixin',['./transpiled/DropdownStateMixin'], function (DropdownStateMixin) {
   return DropdownStateMixin['default'];
 });
 define(
@@ -3020,11 +3020,11 @@ define(
       }
     };
   });
-define('FadeMixin',['./react-bootstrap-bower-master/transpiled/FadeMixin'], function (FadeMixin) {
+define('FadeMixin',['./transpiled/FadeMixin'], function (FadeMixin) {
   return FadeMixin['default'];
 });
 define(
-  'transpiled/Glyphicon',["./react-es6","./react-es6/lib/cx","./react-bootstrap-bower-master/BootstrapMixin","./constants","exports"],
+  'transpiled/Glyphicon',["./react-es6","./react-es6/lib/cx","./BootstrapMixin","./constants","exports"],
   function(__dependency1__, __dependency2__, __dependency3__, __dependency4__, __exports__) {
     
     /** @jsx React.DOM */
@@ -3062,11 +3062,11 @@ define(
 
     __exports__["default"] = Glyphicon;
   });
-define('Glyphicon',['./react-bootstrap-bower-master/transpiled/Glyphicon'], function (Glyphicon) {
+define('Glyphicon',['./transpiled/Glyphicon'], function (Glyphicon) {
   return Glyphicon['default'];
 });
 define(
-  'transpiled/Grid',["./react-es6","./react-bootstrap-bower-master/PropTypes","exports"],
+  'transpiled/Grid',["./react-es6","./PropTypes","exports"],
   function(__dependency1__, __dependency2__, __exports__) {
     
     /** @jsx React.DOM */
@@ -3100,7 +3100,7 @@ define(
 
     __exports__["default"] = Grid;
   });
-define('Grid',['./react-bootstrap-bower-master/transpiled/Grid'], function (Grid) {
+define('Grid',['./transpiled/Grid'], function (Grid) {
   return Grid['default'];
 });
 define(
@@ -3209,11 +3209,11 @@ define(
 
     __exports__["default"] = Input;
   });
-define('Input',['./react-bootstrap-bower-master/transpiled/Input'], function (Input) {
+define('Input',['./transpiled/Input'], function (Input) {
   return Input['default'];
 });
 define(
-  'transpiled/Interpolate',["./react-es6","./react-es6/lib/invariant","./react-bootstrap-bower-master/utils","exports"],
+  'transpiled/Interpolate',["./react-es6","./react-es6/lib/invariant","./utils","exports"],
   function(__dependency1__, __dependency2__, __dependency3__, __exports__) {
     
     // https://www.npmjs.org/package/react-interpolate-component
@@ -3299,7 +3299,7 @@ define(
 
     __exports__["default"] = Interpolate;
   });
-define('Interpolate',['./react-bootstrap-bower-master/transpiled/Interpolate'], function (Interpolate) {
+define('Interpolate',['./transpiled/Interpolate'], function (Interpolate) {
   return Interpolate['default'];
 });
 define(
@@ -3324,11 +3324,11 @@ define(
 
     __exports__["default"] = Jumbotron;
   });
-define('Jumbotron',['./react-bootstrap-bower-master/transpiled/Jumbotron'], function (Jumbotron) {
+define('Jumbotron',['./transpiled/Jumbotron'], function (Jumbotron) {
   return Jumbotron['default'];
 });
 define(
-  'transpiled/Label',["./react-es6","./react-es6/lib/cx","./react-bootstrap-bower-master/BootstrapMixin","exports"],
+  'transpiled/Label',["./react-es6","./react-es6/lib/cx","./BootstrapMixin","exports"],
   function(__dependency1__, __dependency2__, __dependency3__, __exports__) {
     
     /** @jsx React.DOM */
@@ -3360,7 +3360,7 @@ define(
 
     __exports__["default"] = Label;
   });
-define('Label',['./react-bootstrap-bower-master/transpiled/Label'], function (Label) {
+define('Label',['./transpiled/Label'], function (Label) {
   return Label['default'];
 });
 define(
@@ -3425,11 +3425,11 @@ define(
 
     __exports__["default"] = MenuItem;
   });
-define('MenuItem',['./react-bootstrap-bower-master/transpiled/MenuItem'], function (MenuItem) {
+define('MenuItem',['./transpiled/MenuItem'], function (MenuItem) {
   return MenuItem['default'];
 });
 define(
-  'transpiled/Modal',["./react-es6","./react-es6/lib/cx","./react-bootstrap-bower-master/BootstrapMixin","./FadeMixin","exports"],
+  'transpiled/Modal',["./react-es6","./react-es6/lib/cx","./BootstrapMixin","./FadeMixin","exports"],
   function(__dependency1__, __dependency2__, __dependency3__, __dependency4__, __exports__) {
     
     /** @jsx React.DOM */
@@ -3562,11 +3562,11 @@ define(
 
     __exports__["default"] = Modal;
   });
-define('Modal',['./react-bootstrap-bower-master/transpiled/Modal'], function (Modal) {
+define('Modal',['./transpiled/Modal'], function (Modal) {
   return Modal['default'];
 });
 define(
-  'transpiled/Nav',["./react-es6","./react-es6/lib/cx","./react-bootstrap-bower-master/BootstrapMixin","./utils","exports"],
+  'transpiled/Nav',["./react-es6","./react-es6/lib/cx","./BootstrapMixin","./utils","exports"],
   function(__dependency1__, __dependency2__, __dependency3__, __dependency4__, __exports__) {
     
     /** @jsx React.DOM */
@@ -3643,11 +3643,11 @@ define(
 
     __exports__["default"] = Nav;
   });
-define('Nav',['./react-bootstrap-bower-master/transpiled/Nav'], function (Nav) {
+define('Nav',['./transpiled/Nav'], function (Nav) {
   return Nav['default'];
 });
 define(
-  'transpiled/Navbar',["./react-es6","./react-es6/lib/cx","./react-bootstrap-bower-master/BootstrapMixin","./PropTypes","exports"],
+  'transpiled/Navbar',["./react-es6","./react-es6/lib/cx","./BootstrapMixin","./PropTypes","exports"],
   function(__dependency1__, __dependency2__, __dependency3__, __dependency4__, __exports__) {
     
     /** @jsx React.DOM */
@@ -3698,11 +3698,11 @@ define(
 
     __exports__["default"] = Navbar;
   });
-define('Navbar',['./react-bootstrap-bower-master/transpiled/Navbar'], function (Navbar) {
+define('Navbar',['./transpiled/Navbar'], function (Navbar) {
   return Navbar['default'];
 });
 define(
-  'transpiled/NavItem',["./react-es6","./react-es6/lib/cx","./react-bootstrap-bower-master/BootstrapMixin","exports"],
+  'transpiled/NavItem',["./react-es6","./react-es6/lib/cx","./BootstrapMixin","exports"],
   function(__dependency1__, __dependency2__, __dependency3__, __exports__) {
     
     /** @jsx React.DOM */
@@ -3760,7 +3760,7 @@ define(
 
     __exports__["default"] = NavItem;
   });
-define('NavItem',['./react-bootstrap-bower-master/transpiled/NavItem'], function (NavItem) {
+define('NavItem',['./transpiled/NavItem'], function (NavItem) {
   return NavItem['default'];
 });
 define(
@@ -3830,7 +3830,7 @@ define(
     };
   });
 define(
-  'transpiled/ModalTrigger',["./react-es6","./react-es6/lib/cloneWithProps","./react-bootstrap-bower-master/OverlayMixin","./utils","exports"],
+  'transpiled/ModalTrigger',["./react-es6","./react-es6/lib/cloneWithProps","./OverlayMixin","./utils","exports"],
   function(__dependency1__, __dependency2__, __dependency3__, __dependency4__, __exports__) {
     
     /** @jsx React.DOM */
@@ -3897,11 +3897,11 @@ define(
 
     __exports__["default"] = ModalTrigger;
   });
-define('ModalTrigger',['./react-bootstrap-bower-master/transpiled/ModalTrigger'], function (ModalTrigger) {
+define('ModalTrigger',['./transpiled/ModalTrigger'], function (ModalTrigger) {
   return ModalTrigger['default'];
 });
 define(
-  'transpiled/OverlayTrigger',["./react-es6","./react-es6/lib/cloneWithProps","./react-es6/lib/merge","./react-bootstrap-bower-master/OverlayMixin","./domUtils","./utils","exports"],
+  'transpiled/OverlayTrigger',["./react-es6","./react-es6/lib/cloneWithProps","./react-es6/lib/merge","./OverlayMixin","./domUtils","./utils","exports"],
   function(__dependency1__, __dependency2__, __dependency3__, __dependency4__, __dependency5__, __dependency6__, __exports__) {
     
     /** @jsx React.DOM */
@@ -4125,10 +4125,10 @@ define(
 
     __exports__["default"] = OverlayTrigger;
   });
-define('OverlayTrigger',['./react-bootstrap-bower-master/transpiled/OverlayTrigger'], function (OverlayTrigger) {
+define('OverlayTrigger',['./transpiled/OverlayTrigger'], function (OverlayTrigger) {
   return OverlayTrigger['default'];
 });
-define('OverlayMixin',['./react-bootstrap-bower-master/transpiled/OverlayMixin'], function (OverlayMixin) {
+define('OverlayMixin',['./transpiled/OverlayMixin'], function (OverlayMixin) {
   return OverlayMixin['default'];
 });
 define(
@@ -4153,11 +4153,11 @@ define(
 
     __exports__["default"] = PageHeader;
   });
-define('PageHeader',['./react-bootstrap-bower-master/transpiled/PageHeader'], function (PageHeader) {
+define('PageHeader',['./transpiled/PageHeader'], function (PageHeader) {
   return PageHeader['default'];
 });
 define(
-  'transpiled/Panel',["./react-es6","./react-es6/lib/cx","./react-es6/lib/ReactTransitionEvents","./react-bootstrap-bower-master/BootstrapMixin","./utils","exports"],
+  'transpiled/Panel',["./react-es6","./react-es6/lib/cx","./react-es6/lib/ReactTransitionEvents","./BootstrapMixin","./utils","exports"],
   function(__dependency1__, __dependency2__, __dependency3__, __dependency4__, __dependency5__, __exports__) {
     
     /** @jsx React.DOM */
@@ -4385,14 +4385,14 @@ define(
 
     __exports__["default"] = Panel;
   });
-define('Panel',['./react-bootstrap-bower-master/transpiled/Panel'], function (Panel) {
+define('Panel',['./transpiled/Panel'], function (Panel) {
   return Panel['default'];
 });
-define('PanelGroup',['./react-bootstrap-bower-master/transpiled/PanelGroup'], function (PanelGroup) {
+define('PanelGroup',['./transpiled/PanelGroup'], function (PanelGroup) {
   return PanelGroup['default'];
 });
 define(
-  'transpiled/Popover',["./react-es6","./react-es6/lib/cx","./react-bootstrap-bower-master/BootstrapMixin","./utils","exports"],
+  'transpiled/Popover',["./react-es6","./react-es6/lib/cx","./BootstrapMixin","./utils","exports"],
   function(__dependency1__, __dependency2__, __dependency3__, __dependency4__, __exports__) {
     
     /** @jsx React.DOM */
@@ -4456,11 +4456,11 @@ define(
 
     __exports__["default"] = Popover;
   });
-define('Popover',['./react-bootstrap-bower-master/transpiled/Popover'], function (Popover) {
+define('Popover',['./transpiled/Popover'], function (Popover) {
   return Popover['default'];
 });
 define(
-  'transpiled/ProgressBar',["./react-es6","./react-es6/lib/cx","./react-bootstrap-bower-master/Interpolate","./BootstrapMixin","./utils","exports"],
+  'transpiled/ProgressBar',["./react-es6","./react-es6/lib/cx","./Interpolate","./BootstrapMixin","./utils","exports"],
   function(__dependency1__, __dependency2__, __dependency3__, __dependency4__, __dependency5__, __exports__) {
     
     /** @jsx React.DOM */
@@ -4589,11 +4589,11 @@ define(
 
     __exports__["default"] = ProgressBar;
   });
-define('ProgressBar',['./react-bootstrap-bower-master/transpiled/ProgressBar'], function (ProgressBar) {
+define('ProgressBar',['./transpiled/ProgressBar'], function (ProgressBar) {
   return ProgressBar['default'];
 });
 define(
-  'transpiled/Row',["./react-es6","./react-bootstrap-bower-master/PropTypes","exports"],
+  'transpiled/Row',["./react-es6","./PropTypes","exports"],
   function(__dependency1__, __dependency2__, __exports__) {
     
     /** @jsx React.DOM */
@@ -4626,11 +4626,11 @@ define(
 
     __exports__["default"] = Row;
   });
-define('Row',['./react-bootstrap-bower-master/transpiled/Row'], function (Row) {
+define('Row',['./transpiled/Row'], function (Row) {
   return Row['default'];
 });
 define(
-  'transpiled/SplitButton',["./react-es6","./react-es6/lib/cx","./react-bootstrap-bower-master/BootstrapMixin","./DropdownStateMixin","./Button","./ButtonGroup","./DropdownMenu","exports"],
+  'transpiled/SplitButton',["./react-es6","./react-es6/lib/cx","./BootstrapMixin","./DropdownStateMixin","./Button","./ButtonGroup","./DropdownMenu","exports"],
   function(__dependency1__, __dependency2__, __dependency3__, __dependency4__, __dependency5__, __dependency6__, __dependency7__, __exports__) {
     
     /** @jsx React.DOM */
@@ -4717,11 +4717,11 @@ define(
 
     __exports__["default"] = SplitButton;
   });
-define('SplitButton',['./react-bootstrap-bower-master/transpiled/SplitButton'], function (SplitButton) {
+define('SplitButton',['./transpiled/SplitButton'], function (SplitButton) {
   return SplitButton['default'];
 });
 define(
-  'transpiled/SubNav',["./react-es6","./react-es6/lib/cx","./react-bootstrap-bower-master/BootstrapMixin","./utils","exports"],
+  'transpiled/SubNav',["./react-es6","./react-es6/lib/cx","./BootstrapMixin","./utils","exports"],
   function(__dependency1__, __dependency2__, __dependency3__, __dependency4__, __exports__) {
     
     /** @jsx React.DOM */
@@ -4851,11 +4851,11 @@ define(
 
     __exports__["default"] = SubNav;
   });
-define('SubNav',['./react-bootstrap-bower-master/transpiled/SubNav'], function (SubNav) {
+define('SubNav',['./transpiled/SubNav'], function (SubNav) {
   return SubNav['default'];
 });
 define(
-  'transpiled/TabbedArea',["./react-es6","./react-bootstrap-bower-master/BootstrapMixin","./utils","./Nav","./NavItem","exports"],
+  'transpiled/TabbedArea',["./react-es6","./BootstrapMixin","./utils","./Nav","./NavItem","exports"],
   function(__dependency1__, __dependency2__, __dependency3__, __dependency4__, __dependency5__, __exports__) {
     
     /** @jsx React.DOM */
@@ -4986,7 +4986,7 @@ define(
 
     __exports__["default"] = TabbedArea;
   });
-define('TabbedArea',['./react-bootstrap-bower-master/transpiled/TabbedArea'], function (TabbedArea) {
+define('TabbedArea',['./transpiled/TabbedArea'], function (TabbedArea) {
   return TabbedArea['default'];
 });
 define(
@@ -5077,11 +5077,11 @@ define(
 
     __exports__["default"] = TabPane;
   });
-define('TabPane',['./react-bootstrap-bower-master/transpiled/TabPane'], function (TabPane) {
+define('TabPane',['./transpiled/TabPane'], function (TabPane) {
   return TabPane['default'];
 });
 define(
-  'transpiled/Tooltip',["./react-es6","./react-es6/lib/cx","./react-bootstrap-bower-master/BootstrapMixin","./utils","exports"],
+  'transpiled/Tooltip',["./react-es6","./react-es6/lib/cx","./BootstrapMixin","./utils","exports"],
   function(__dependency1__, __dependency2__, __dependency3__, __dependency4__, __exports__) {
     
     /** @jsx React.DOM */
@@ -5136,11 +5136,11 @@ define(
 
     __exports__["default"] = Tooltip;
   });
-define('Tooltip',['./react-bootstrap-bower-master/transpiled/Tooltip'], function (Tooltip) {
+define('Tooltip',['./transpiled/Tooltip'], function (Tooltip) {
   return Tooltip['default'];
 });
 define(
-  'transpiled/Well',["./react-es6","./react-es6/lib/cx","./react-bootstrap-bower-master/BootstrapMixin","exports"],
+  'transpiled/Well',["./react-es6","./react-es6/lib/cx","./BootstrapMixin","exports"],
   function(__dependency1__, __dependency2__, __dependency3__, __exports__) {
     
     /** @jsx React.DOM */
@@ -5171,12 +5171,12 @@ define(
 
     __exports__["default"] = Well;
   });
-define('Well',['./react-bootstrap-bower-master/transpiled/Well'], function (Well) {
+define('Well',['./transpiled/Well'], function (Well) {
   return Well['default'];
 });
 /*global define */
 
-define('react-bootstrap',['require','./react-bootstrap-bower-master/Accordion','./Affix','./AffixMixin','./Alert','./BootstrapMixin','./Badge','./Button','./ButtonGroup','./ButtonToolbar','./Carousel','./CarouselItem','./Col','./DropdownButton','./DropdownMenu','./DropdownStateMixin','./FadeMixin','./Glyphicon','./Grid','./Input','./Interpolate','./Jumbotron','./Label','./MenuItem','./Modal','./Nav','./Navbar','./NavItem','./ModalTrigger','./OverlayTrigger','./OverlayMixin','./PageHeader','./Panel','./PanelGroup','./Popover','./ProgressBar','./Row','./SplitButton','./SubNav','./TabbedArea','./TabPane','./Tooltip','./Well'],function (require) {
+define('react-bootstrap',['require','./Accordion','./Affix','./AffixMixin','./Alert','./BootstrapMixin','./Badge','./Button','./ButtonGroup','./ButtonToolbar','./Carousel','./CarouselItem','./Col','./DropdownButton','./DropdownMenu','./DropdownStateMixin','./FadeMixin','./Glyphicon','./Grid','./Input','./Interpolate','./Jumbotron','./Label','./MenuItem','./Modal','./Nav','./Navbar','./NavItem','./ModalTrigger','./OverlayTrigger','./OverlayMixin','./PageHeader','./Panel','./PanelGroup','./Popover','./ProgressBar','./Row','./SplitButton','./SubNav','./TabbedArea','./TabPane','./Tooltip','./Well'],function (require) {
   
 
   return {
