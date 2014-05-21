@@ -5,6 +5,45 @@
 require(["react"], function(React) {
 
     var converter = new Showdown.converter();
+
+    var BootstrapHeader =  React.createClass({
+        render: function() {
+            return (
+                <div className="page-header">
+                    <h1>Comment Example <small>Made by: Aleksander Waage</small></h1>
+                </div>
+            )
+        }
+    });
+
+
+    var BootstrapNavBar =  React.createClass({
+        render: function() {
+            return (
+                <nav className="navbar navbar-default" role="navigation">
+                    <div className="container-fluid">
+
+                        <div className="navbar-header">
+                            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span className="sr-only">Toggle navigation</span>
+                                <span className="icon-bar"></span>
+                                <span className="icon-bar"></span>
+                                <span className="icon-bar"></span>
+                            </button>
+                            <a className="navbar-brand" href="#">Comment</a>
+                        </div>
+
+                        <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul className="nav navbar-nav">
+                                <li className="active"><a href="#">Link</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            )
+        }
+    });
+
     var CommentBox = React.createClass({
         loadCommentsFromServer: function() {
             $.ajax({
@@ -48,9 +87,15 @@ require(["react"], function(React) {
         },
         render: function() {
             return (
-                <div className="commentBox">
-                    <CommentList data={this.state.data} />
-                    <CommentForm onCommentSubmit={this.handleCommentSubmit} />
+                <div>
+                    <BootstrapHeader />
+                    <BootstrapNavBar />
+
+
+                    <div className="jumbotron">
+                        <CommentList data={this.state.data} />
+                        <CommentForm onCommentSubmit={this.handleCommentSubmit} />
+                    </div>
                 </div>
                 );
         }
@@ -69,54 +114,35 @@ require(["react"], function(React) {
         }
     });
 
-    // Simple pure-React component so we don't have to remember
-    // Bootstrap's classes
-    var BootstrapButton = React.createClass({
-        render: function() {
-            // transferPropsTo() is smart enough to merge classes provided
-            // to this component.
-            return this.transferPropsTo(
-                <a href="javascript:;" role="button" className="btn">
-        {this.props.children}
-                </a>
-            );
-        }
-    });
-
     var CommentForm = React.createClass({
         handleSubmit: function() {
             var author = this.refs.author.getDOMNode().value.trim();
             var text = this.refs.text.getDOMNode().value.trim();
-            var time = this.refs.time.getDOMNode().value.trim();
+            var time = new Date().toLocaleTimeString();
+
             this.props.onCommentSubmit({author: author, text: text, time: time});
             this.refs.author.getDOMNode().value = '';
             this.refs.text.getDOMNode().value = '';
-            this.refs.time.getDOMNode().value = '';
             return false;
         },
 
         render: function() {
             return (
-                <form className="commentForm" onSubmit={this.handleSubmit}>
+                    <form role="form" className="commentForm" onSubmit={this.handleSubmit}>
 
-                    <div >
-                        <label for="name">Name:</label>
-                            <input type="text" placeholder="Your name" ref="author" />
-                    </div>
+                        <div  className="form-group">
+                            <label for="name">Name:</label>
+                                <input id="name" className="form-control" type="text" placeholder="Your name" ref="author" />
+                        </div>
 
-                    <div class="form-group">
-                        <label for="time">Time:</label>
-                        <input  type="text" placeholder="Time" ref="time" />
-                    </div>
+                        <div className="form-group">
+                            <label for="comment" >Comment:</label>
+                            <textarea id="name" type="text" className="form-control" rows="3" placeholder="Say something..." ref="text" />
+                        </div>
 
-                    <div class="form-group">
-                        <label >Comment:</label>
-                        <textarea type="text" placeholder="Say something..." ref="text" />
-                    </div>
+                        <button type="submit" className="btn btn-primary">Post</button>
 
-                    <button type="submit">Post</button>
-
-                </form>
+                    </form>
                 );
         }
     });
@@ -126,15 +152,11 @@ require(["react"], function(React) {
             var rawMarkup = converter.makeHtml(this.props.children.toString())
             return (
                 <div className="comment">
-                    <h2 className="commentAuthor">
-                            {this.props.author}
-                    </h2>
-                    <h5>
-                            {this.props.time}
-                    </h5>
-                    <span dangerouslySetInnerHTML={{__html: rawMarkup}} />
+                    <h2> {this.props.author} </h2>
+                    <h5><small> {this.props.time} </small></h5>
+                    <p><span dangerouslySetInnerHTML={{__html: rawMarkup}} /></p>
                 </div>
-                );
+            );
         }
     });
     React.renderComponent(

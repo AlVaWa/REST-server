@@ -5,6 +5,45 @@
 require(["react"], function(React) {
 
     var converter = new Showdown.converter();
+
+    var BootstrapHeader =  React.createClass({displayName: 'BootstrapHeader',
+        render: function() {
+            return (
+                React.DOM.div( {className:"page-header"}, 
+                    React.DOM.h1(null, "Comment Example ", React.DOM.small(null, "Made by: Aleksander Waage"))
+                )
+            )
+        }
+    });
+
+
+    var BootstrapNavBar =  React.createClass({displayName: 'BootstrapNavBar',
+        render: function() {
+            return (
+                React.DOM.nav( {className:"navbar navbar-default", role:"navigation"}, 
+                    React.DOM.div( {className:"container-fluid"}, 
+
+                        React.DOM.div( {className:"navbar-header"}, 
+                            React.DOM.button( {type:"button", className:"navbar-toggle", 'data-toggle':"collapse", 'data-target':"#bs-example-navbar-collapse-1"}, 
+                                React.DOM.span( {className:"sr-only"}, "Toggle navigation"),
+                                React.DOM.span( {className:"icon-bar"}),
+                                React.DOM.span( {className:"icon-bar"}),
+                                React.DOM.span( {className:"icon-bar"})
+                            ),
+                            React.DOM.a( {className:"navbar-brand", href:"#"}, "Comment")
+                        ),
+
+                        React.DOM.div( {className:"collapse navbar-collapse", id:"bs-example-navbar-collapse-1"}, 
+                            React.DOM.ul( {className:"nav navbar-nav"}, 
+                                React.DOM.li( {className:"active"}, React.DOM.a( {href:"#"}, "Link"))
+                            )
+                        )
+                    )
+                )
+            )
+        }
+    });
+
     var CommentBox = React.createClass({displayName: 'CommentBox',
         loadCommentsFromServer: function() {
             $.ajax({
@@ -48,9 +87,15 @@ require(["react"], function(React) {
         },
         render: function() {
             return (
-                React.DOM.div( {className:"commentBox"}, 
-                    CommentList( {data:this.state.data} ),
-                    CommentForm( {onCommentSubmit:this.handleCommentSubmit} )
+                React.DOM.div(null, 
+                    BootstrapHeader(null ),
+                    BootstrapNavBar(null ),
+
+
+                    React.DOM.div( {className:"jumbotron"}, 
+                        CommentList( {data:this.state.data} ),
+                        CommentForm( {onCommentSubmit:this.handleCommentSubmit} )
+                    )
                 )
                 );
         }
@@ -69,54 +114,35 @@ require(["react"], function(React) {
         }
     });
 
-    // Simple pure-React component so we don't have to remember
-    // Bootstrap's classes
-    var BootstrapButton = React.createClass({displayName: 'BootstrapButton',
-        render: function() {
-            // transferPropsTo() is smart enough to merge classes provided
-            // to this component.
-            return this.transferPropsTo(
-                React.DOM.a( {href:"javascript:;", role:"button", className:"btn"}, 
-        this.props.children
-                )
-            );
-        }
-    });
-
     var CommentForm = React.createClass({displayName: 'CommentForm',
         handleSubmit: function() {
             var author = this.refs.author.getDOMNode().value.trim();
             var text = this.refs.text.getDOMNode().value.trim();
-            var time = this.refs.time.getDOMNode().value.trim();
+            var time = new Date().toLocaleTimeString();
+
             this.props.onCommentSubmit({author: author, text: text, time: time});
             this.refs.author.getDOMNode().value = '';
             this.refs.text.getDOMNode().value = '';
-            this.refs.time.getDOMNode().value = '';
             return false;
         },
 
         render: function() {
             return (
-                React.DOM.form( {className:"commentForm", onSubmit:this.handleSubmit}, 
+                    React.DOM.form( {role:"form", className:"commentForm", onSubmit:this.handleSubmit}, 
 
-                    React.DOM.div(null , 
-                        React.DOM.label( {for:"name"}, "Name:"),
-                            React.DOM.input( {type:"text", placeholder:"Your name", ref:"author"} )
-                    ),
+                        React.DOM.div(  {className:"form-group"}, 
+                            React.DOM.label( {for:"name"}, "Name:"),
+                                React.DOM.input( {id:"name", className:"form-control", type:"text", placeholder:"Your name", ref:"author"} )
+                        ),
 
-                    React.DOM.div( {class:"form-group"}, 
-                        React.DOM.label( {for:"time"}, "Time:"),
-                        React.DOM.input(  {type:"text", placeholder:"Time", ref:"time"} )
-                    ),
+                        React.DOM.div( {className:"form-group"}, 
+                            React.DOM.label( {for:"comment"} , "Comment:"),
+                            React.DOM.textarea( {id:"name", type:"text", className:"form-control", rows:"3", placeholder:"Say something...", ref:"text"} )
+                        ),
 
-                    React.DOM.div( {class:"form-group"}, 
-                        React.DOM.label(null , "Comment:"),
-                        React.DOM.textarea( {type:"text", placeholder:"Say something...", ref:"text"} )
-                    ),
+                        React.DOM.button( {type:"submit", className:"btn btn-primary"}, "Post")
 
-                    React.DOM.button( {type:"submit"}, "Post")
-
-                )
+                    )
                 );
         }
     });
@@ -126,15 +152,11 @@ require(["react"], function(React) {
             var rawMarkup = converter.makeHtml(this.props.children.toString())
             return (
                 React.DOM.div( {className:"comment"}, 
-                    React.DOM.h2( {className:"commentAuthor"}, 
-                            this.props.author
-                    ),
-                    React.DOM.h5(null, 
-                            this.props.time
-                    ),
-                    React.DOM.span( {dangerouslySetInnerHTML:{__html: rawMarkup}} )
+                    React.DOM.h2(null,  " ", this.props.author, " " ),
+                    React.DOM.h5(null, React.DOM.small(null,  " ", this.props.time, " " )),
+                    React.DOM.p(null, React.DOM.span( {dangerouslySetInnerHTML:{__html: rawMarkup}} ))
                 )
-                );
+            );
         }
     });
     React.renderComponent(
