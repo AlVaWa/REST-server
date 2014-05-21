@@ -5,8 +5,8 @@ But with Bootstrap and a restserver.
 
 ## To use
 
-```
+
 run server with tomcat or Jetty
-```
+
 
 And visit http://localhost:8080/app/static/index.html
