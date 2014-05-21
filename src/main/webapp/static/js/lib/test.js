@@ -2,7 +2,7 @@
  * @jsx React.DOM
  */
 
-require(["react", "react-bootstrap-bower-master/Alert"], function(React, Alert ) {
+require(["react"], function(React) {
 
     var converter = new Showdown.converter();
     var CommentBox = React.createClass({displayName: 'CommentBox',
@@ -69,7 +69,19 @@ require(["react", "react-bootstrap-bower-master/Alert"], function(React, Alert )
         }
     });
 
-
+    // Simple pure-React component so we don't have to remember
+    // Bootstrap's classes
+    var BootstrapButton = React.createClass({displayName: 'BootstrapButton',
+        render: function() {
+            // transferPropsTo() is smart enough to merge classes provided
+            // to this component.
+            return this.transferPropsTo(
+                React.DOM.a( {href:"javascript:;", role:"button", className:"btn"}, 
+        this.props.children
+                )
+            );
+        }
+    });
 
     var CommentForm = React.createClass({displayName: 'CommentForm',
         handleSubmit: function() {
