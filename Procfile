@@ -1,1 +1,1 @@
-web:    src\main\webapp\static\index.html
+web:    static\index.html
