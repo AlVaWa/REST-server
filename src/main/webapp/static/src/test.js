@@ -102,9 +102,27 @@ require(["react"], function(React) {
     });
 
     var CommentList = React.createClass({
+        destroy: function (comment) {
+            $.ajax({
+                url: "http://localhost:8900/app/api/comment",
+                dataType: 'json',
+                contentType : 'application/x-www-form-urlencoded',
+                type: 'DELETE',
+                data: 'id=' + comment.id,
+                success: function() {
+
+                }.bind(this),
+                error: function(xhr, status, err) {
+                    console.error("http://localhost:8900/app/api/comment", status, err.toString());
+                }.bind(this)
+            });
+
+
+        },
         render: function() {
+            var self = this;
             var commentNodes = this.props.data.map(function (comment) {
-                return <Comment time={comment.time} author={comment.author}>{comment.text}</Comment>
+                return <Comment onDestroy={self.destroy.bind(this, comment)} id={comment.id} time={comment.time} author={comment.author}>{comment.text}</Comment>
             });
             return (
                 <div className="commentList">
@@ -113,6 +131,7 @@ require(["react"], function(React) {
                 );
         }
     });
+
 
     var CommentForm = React.createClass({
         handleSubmit: function() {
@@ -132,7 +151,7 @@ require(["react"], function(React) {
 
                         <div  className="form-group">
                             <label for="name">Name:</label>
-                                <input id="name" className="form-control" type="text" placeholder="Your name" ref="author" />
+                            <input id="name" className="form-control" type="text" placeholder="Your name" ref="author" />
                         </div>
 
                         <div className="form-group">
@@ -148,13 +167,19 @@ require(["react"], function(React) {
     });
 
     var Comment = React.createClass({
+        buttonPressed: function(){
+            this.props.onDestroy();
+        },
         render: function() {
             var rawMarkup = converter.makeHtml(this.props.children.toString())
             return (
                 <div className="comment">
-                    <h2> {this.props.author} </h2>
+                    <h2> {this.props.author} <button type="submit" className="btn btn-default" onClick={this.buttonPressed}>
+                        <span className="glyphicon glyphicon-remove-circle"></span>
+                    </button></h2>
                     <h5><small> {this.props.time} </small></h5>
                     <p><span dangerouslySetInnerHTML={{__html: rawMarkup}} /></p>
+
                 </div>
             );
         }

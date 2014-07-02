@@ -11,12 +11,21 @@ import java.io.Serializable;
  * To change this template use File | Settings | File Templates.
  */
 public class BlogComment implements Serializable {
-    String author, text, time;
+    String id, author, text, time;
 
-    public BlogComment(String author, String text, String time) {
+    public BlogComment(String id, String author, String text, String time) {
+        this.id = id;
         this.author = author;
         this.text = text;
         this.time = time;
+    }
+    @XmlElement
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     @XmlElement

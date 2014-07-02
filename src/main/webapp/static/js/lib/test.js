@@ -102,9 +102,27 @@ require(["react"], function(React) {
     });
 
     var CommentList = React.createClass({displayName: 'CommentList',
+        destroy: function (comment) {
+            $.ajax({
+                url: "http://localhost:8900/app/api/comment",
+                dataType: 'json',
+                contentType : 'application/x-www-form-urlencoded',
+                type: 'DELETE',
+                data: 'id=' + comment.id,
+                success: function() {
+
+                }.bind(this),
+                error: function(xhr, status, err) {
+                    console.error("http://localhost:8900/app/api/comment", status, err.toString());
+                }.bind(this)
+            });
+
+
+        },
         render: function() {
+            var self = this;
             var commentNodes = this.props.data.map(function (comment) {
-                return Comment( {time:comment.time, author:comment.author}, comment.text)
+                return Comment( {onDestroy:self.destroy.bind(this, comment), id:comment.id, time:comment.time, author:comment.author}, comment.text)
             });
             return (
                 React.DOM.div( {className:"commentList"}, 
@@ -113,6 +131,7 @@ require(["react"], function(React) {
                 );
         }
     });
+
 
     var CommentForm = React.createClass({displayName: 'CommentForm',
         handleSubmit: function() {
@@ -132,7 +151,7 @@ require(["react"], function(React) {
 
                         React.DOM.div(  {className:"form-group"}, 
                             React.DOM.label( {for:"name"}, "Name:"),
-                                React.DOM.input( {id:"name", className:"form-control", type:"text", placeholder:"Your name", ref:"author"} )
+                            React.DOM.input( {id:"name", className:"form-control", type:"text", placeholder:"Your name", ref:"author"} )
                         ),
 
                         React.DOM.div( {className:"form-group"}, 
@@ -148,13 +167,19 @@ require(["react"], function(React) {
     });
 
     var Comment = React.createClass({displayName: 'Comment',
+        buttonPressed: function(){
+            this.props.onDestroy();
+        },
         render: function() {
             var rawMarkup = converter.makeHtml(this.props.children.toString())
             return (
                 React.DOM.div( {className:"comment"}, 
-                    React.DOM.h2(null,  " ", this.props.author, " " ),
+                    React.DOM.h2(null,  " ", this.props.author, " ", React.DOM.button( {type:"submit", className:"btn btn-default", onClick:this.buttonPressed}, 
+                        React.DOM.span( {className:"glyphicon glyphicon-remove-circle"})
+                    )),
                     React.DOM.h5(null, React.DOM.small(null,  " ", this.props.time, " " )),
                     React.DOM.p(null, React.DOM.span( {dangerouslySetInnerHTML:{__html: rawMarkup}} ))
+
                 )
             );
         }
